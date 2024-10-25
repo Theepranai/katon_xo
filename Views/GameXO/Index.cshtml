@@ -1,0 +1,38 @@
+﻿@using katon_xo.Controllers
+@model string[];
+@{
+    ViewData["Title"] = "Index";
+}
+<style>
+    .xobtn{
+        width : 100px;
+        height : 100px;
+        padding: 0 !important;
+        margin: 0.25rem !important;
+    }
+</style>
+<div class="text-center">
+    <form>
+        <input type="hidden" value="X" name="text" />
+    @for(var i = 0; i < Model.Count(); i++)
+    {
+            if (i % 3 == 0)
+            {
+               <br />
+            }
+            <button class="xobtn btn btn-light" name="id" value="@i" @(Model[i] != "" ? "disabled":"")>@Model[i]</button>
+           
+        }
+    </form>
+
+    <p>- @TempData["winner"] - </p>
+    
+    <a class="btn btn-light" asp-controller="GameXO" asp-action="NewGame">New Game</a>
+    <a class="btn btn-light" asp-controller="GameXO" asp-action="Reset">Reset Game</a>
+
+    <p>
+        
+        X (@TempValue.Xwin) Win | O (@TempValue.Owin) Win | Draw (@TempValue.Draw)
+    </p>
+
+</div>

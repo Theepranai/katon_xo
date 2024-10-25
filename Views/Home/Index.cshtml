@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    @if(User?.Identity?.IsAuthenticated == true)
+    {
+        <a asp-controller="GameXO" asp-action="NewGame">Play Game</a>
+    }
+    else
+    {
+         <p><a asp-controller="Home" asp-action="Login">Please Login to enter the Game</a></p>
+    }
+   
+</div>
